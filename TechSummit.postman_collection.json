@@ -1,0 +1,195 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Nutanix",
+		"_postman_id": "5404ad7e-3b04-76cb-646b-fb8c061d8680",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "V2:Images",
+			"description": "Image Resources",
+			"item": [
+				{
+					"name": "GET Images",
+					"request": {
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/images/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2FuYXJ5MDE=",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "V2:StorageContainers",
+			"description": "",
+			"item": [
+				{
+					"name": "GET Containers",
+					"request": {
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/storage_containers/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2FuYXJ5MDE=",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "V2:VMS",
+			"description": "",
+			"item": [
+				{
+					"name": "GET VM's",
+					"request": {
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/storage_containers/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2FuYXJ5MDE=",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Basic GET"
+					},
+					"response": []
+				},
+				{
+					"name": "Create VM",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "Canary01",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/vms/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2FuYXJ5MDE=",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \n   \"description\":\"Tech Summit 2017\",\n   \"guest_os\":\"Windows2012R2\",\n   \"memory_mb\":4096,\n   \"name\":\"Bobby\",\n   \"num_cores_per_vcpu\":2,\n   \"num_vcpus\":1,\n   \"vm_disks\":[  \n      {  \n         \"disk_address\":{  \n            \"device_bus\":\"ide\",\n            \"device_index\":0\n         },\n         \"is_cdrom\":true,\n         \"is_empty\":false,\n         \"vm_disk_clone\":{  \n            \"disk_address\":{  \n               \"vmdisk_uuid\":\"0cb8c395-dd48-409c-a686-536357bc71db\"\n            }\n         }\n      },\n      {  \n         \"disk_address\":{  \n            \"device_bus\":\"scsi\",\n            \"device_index\":0\n         },\n         \"vm_disk_create\":{  \n            \"storage_container_uuid\":\"8e56571c-2dff-4d25-8f0d-8a4805d977ce\",\n            \"size\":10737418240\n         }\n      },\n      {  \n         \"disk_address\":{  \n            \"device_bus\":\"ide\",\n            \"device_index\":1\n         },\n         \"is_cdrom\":true,\n         \"is_empty\":false,\n         \"vm_disk_clone\":{  \n            \"disk_address\":{  \n               \"vmdisk_uuid\":\"eee5a54b-0874-4fe9-a390-b218aa87fc82\"\n            }\n         }\n      }\n   ],\n   \"hypervisor_type\":\"ACROPOLIS\",\n   \"affinity\":null\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Power OFF",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "Canary01",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/vms/33bbb37e-0ca6-4408-b457-7b161462eb7d/set_power_state/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n  \"transition\": \"OFF\",\n  \"uuid\": \"33bbb37e-0ca6-4408-b457-7b161462eb7d\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete VM",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "Canary01",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/vms/33bbb37e-0ca6-4408-b457-7b161462eb7d/?delete_snapshots=true",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Power ON Bobby",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "Canary01",
+								"saveHelperData": true,
+								"showPassword": false
+							}
+						},
+						"url": "https://10.68.69.102:9440/api/nutanix/v2.0/vms/07b8223c-db00-4037-b766-1c0a7b01b48b/set_power_state/\n",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"task_uuid\": \"37568d2c-085f-41fb-bf15-44e549fdab1b\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
